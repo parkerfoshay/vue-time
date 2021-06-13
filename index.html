@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VueJs v-model</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <!-- Fontawesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+      integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
+      crossorigin="anonymous"
+    />
+    <!-- VueJS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <style></style>
+  </head>
+
+  <body>
+    <div id="app" class="container">
+      <h2>What do you wanna tweet about today</h2>
+
+      <!-- Tweet form -->
+      <form v-on:submit.prevent="submitData">
+        <div class="form-group">
+          <label for="name">Tweet</label>
+          <textarea
+            class="form-control"
+            cols="30"
+            rows="5"
+            v-model="tweet"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Tweet</button>
+      </form>
+
+      <!-- Alert the user  -->
+      <div class="my-3">
+        <span v-if="tweet.length < max_length"> {{ maxCharsText }} </span>
+        <span class="errorMessage" v-else>{{errorMessage}}</span>
+      </div>
+
+      <!-- Tweets message -->
+      <ul>
+        <li v-for="tweet in tweets">{{tweet}}</li>
+      </ul>
+    </div>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
